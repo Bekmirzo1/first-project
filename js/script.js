@@ -30,44 +30,6 @@ testWebP(function (support) {
         document.querySelector('body').classList.add('no-webp');
     }
 });;
-
-const isMobile = {
-    Android: function () {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function () {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function () {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function () {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function () {
-        return navigator.userAgent.match(/IEMobile/i);
-    },
-    any: function () {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-};
-// *Определяем мы на моюольных устройстваъ или нет.
-if (isMobile.any()) {
-    document.body.classList.add('_touch')
-}
-// *Burger menu
-let burger = document.querySelector('.burger__button');
-burger.addEventListener('click', function () {
-    document.body.classList.toggle('_active');
-});
-let header = document.querySelector('.header');
-header.addEventListener('click', function (e) {
-    const target = e.target;
-    if (target.classList.contains('header__overlay')) {
-        document.body.classList.remove('_active');
-    }
-});
-
 // *Slider
 new Swiper('.slide', {
     pagination: {
@@ -99,11 +61,48 @@ new Swiper('.slide', {
     watchSlidesProgress: true,
     // todo Добавление класса видимым слайдам
     watchSlidesVisibility: true,
+});;
+const isMobile = {
+    Android: function () {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function () {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function () {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function () {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
+// *Определяем мы на мобильных устройствах или нет.
+if (isMobile.any()) {
+    document.body.classList.add('_touch')
+}
+// *Burger menu
+let burger = document.querySelector('.burger__button');
+burger.addEventListener('click', function () {
+    document.body.classList.toggle('_active');
+});
+let header = document.querySelector('.header');
+header.addEventListener('click', function (e) {
+    const target = e.target;
+    if (target.classList.contains('header__overlay')) {
+        document.body.classList.remove('_active');
+    }
 });
 // *Мой авторский js код который добаваляет класс opened к ссылкам которые открыты
-function linkColor() {
-    const pathName = document.location.pathname;
-    const links = document.querySelectorAll('.nav__link');
+const pathName = document.location.pathname;
+const links = document.querySelectorAll('.nav__link');
+if (links) {
     for (const link of links) {
         const hrefValue = link.getAttribute('href');
         if (hrefValue != '') {
@@ -113,12 +112,11 @@ function linkColor() {
         }
     }
 }
-linkColor();
 // *Фильтр
-let linksParent = document.querySelector('.sort__links');
+let filterLinksParent = document.querySelector('.sort__links');
 const projects = document.querySelectorAll('.projects__project');
-if (linksParent) {
-    linksParent.addEventListener("click", function (e) {
+if (filterLinksParent) {
+    filterLinksParent.addEventListener("click", function (e) {
         if (e.target.tagName !== 'LI') return;
         const filterAtr = e.target.dataset.find;
         for (const project of projects) {
