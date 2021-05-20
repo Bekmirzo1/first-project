@@ -192,6 +192,51 @@ a {
   visibility: hidden;
 }
 
+@font-face {
+  font-family: 'icons';
+  src: url("../fonts/icons.ttf?7otv5c") format("truetype"), url("../fonts/icons.woff?7otv5c") format("woff"), url("../fonts/icons.svg?7otv5c#icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="_icon-"]::before,
+[class*=" _icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+._icon-comment:before {
+  content: "\e900";
+}
+
+._icon-look:before {
+  content: "\e901";
+  color: #9a9a9a;
+}
+
+._icon-star:before {
+  content: "\e902";
+  color: #9a9a9a;
+}
+
+._icon-more:before {
+  content: "\e904";
+}
+
+._icon-four-lines:before {
+  content: "\e903";
+}
+
 /* Mystyle */
 
 html,
@@ -581,6 +626,11 @@ h4,
           align-items: baseline;
 }
 
+.next__img {
+  font-size: 74%;
+  color: #464646;
+}
+
 .separator {
   background: url(../img/Headerbackground.jpg) 0 0 no-repeat;
   text-align: center;
@@ -861,11 +911,11 @@ h4,
   height: 100%;
 }
 
-.projects__image span {
+.projects__image p {
   position: absolute;
   top: 0;
   left: 0;
-  height: 98.6%;
+  height: 98.4%;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -881,18 +931,22 @@ h4,
   opacity: 0;
 }
 
-.projects__image span svg {
-  opacity: 1;
+.projects__image p span {
+  font-size: 29px;
   border-radius: 5px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.projects__image span:hover {
+.projects__image p span._icon-look::before {
+  color: #000;
+}
+
+.projects__image p:hover {
   opacity: 0.74;
 }
 
-.projects__image span:hover svg {
+.projects__image p:hover span {
   opacity: 0.74;
 }
 
@@ -1047,7 +1101,7 @@ h4,
   color: #C6C6C6;
 }
 
-.submit__next__img {
+.submit__next_img {
   margin: 0px 7px 0px 0px;
 }
 
