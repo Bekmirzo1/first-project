@@ -215,26 +215,13 @@ a {
   -moz-osx-font-smoothing: grayscale;
 }
 
-._icon-comment:before {
-  content: "\e900";
-}
-
 ._icon-look:before {
   content: "\e901";
   color: #9a9a9a;
 }
 
-._icon-star:before {
-  content: "\e902";
-  color: #9a9a9a;
-}
-
 ._icon-more:before {
   content: "\e904";
-}
-
-._icon-four-lines:before {
-  content: "\e903";
 }
 
 /* Mystyle */
