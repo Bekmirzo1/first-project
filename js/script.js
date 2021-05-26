@@ -31,37 +31,41 @@ testWebP(function (support) {
     }
 });;
 // *Slider
-new Swiper('.slide', {
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true
-    },
-    autoHeight: true,
-    effect: 'fade',
-    fadeEffect: {
-        crossFade: true
-    },
-    loop: true,
-    mousewheel: {
-        sensivity: 1,
-    },
-    speed: 800,
-    slideToClickedSlide: false,
-    preloadImages: false,
-    // todo Отключить предзагрузку картинок
-    preloadImages: false,
-    // todo Lazy Loading
-    lazy: {
-        // Подключать на старте переключения слайда
-        loadOnTransitionStart: true,
-        // Подключить предыдущую и следующие картинки
-        loadPrevNext: true,
-    },
-    // todo Слежка за видимыми слайдами
-    watchSlidesProgress: true,
-    // todo Добавление класса видимым слайдам
-    watchSlidesVisibility: true,
-});;
+const slider = document.querySelector('.slide');
+if (slider) {
+    new Swiper('.slide', {
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        autoHeight: true,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        loop: true,
+        mousewheel: {
+            sensivity: 1,
+        },
+        speed: 800,
+        slideToClickedSlide: false,
+        preloadImages: false,
+        // todo Отключить предзагрузку картинок
+        preloadImages: false,
+        // todo Lazy Loading
+        lazy: {
+            // Подключать на старте переключения слайда
+            loadOnTransitionStart: true,
+            // Подключить предыдущую и следующие картинки
+            loadPrevNext: true,
+        },
+        // todo Слежка за видимыми слайдами
+        watchSlidesProgress: true,
+        // todo Добавление класса видимым слайдам
+        watchSlidesVisibility: true,
+    });
+}
+;
 const isMobile = {
     Android: function () {
         return navigator.userAgent.match(/Android/i);
