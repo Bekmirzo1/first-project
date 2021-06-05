@@ -117,31 +117,36 @@ if (links) {
     }
 }
 // *Фильтр
-let filterLinksParent = document.querySelector('.sort__links');
+let filterLinksParents = document.querySelectorAll('.sort__links');
 const projects = document.querySelectorAll('.projects__project');
-if (filterLinksParent) {
-    filterLinksParent.addEventListener("click", function (e) {
-        if (e.target.tagName !== 'LI') return;
-        const filterAtr = e.target.dataset.find;
-        for (const project of projects) {
-            if (project.classList.contains(filterAtr) || filterAtr === 'all') {
-                project.classList.remove('hide');
-            } else {
-                project.classList.add('hide');
-            }
+if (filterLinksParents.length > 0){
+    for (const filterLinksParent of filterLinksParents) {
+        if (filterLinksParent) {
+            filterLinksParent.addEventListener("click", function (e) {
+                if (e.target.tagName !== 'LI') return;
+                const filterAtr = e.target.dataset.find;
+                for (const project of projects) {
+                    if (project.classList.contains(filterAtr) || filterAtr === 'all') {
+                        project.classList.remove('hide');
+                    } else {
+                        project.classList.add('hide');
+                    }
+                }
+            });
+            // Добавляем класс clicked к активным ссылкам
+            let sortLinks = document.querySelectorAll('.sort__link');
+            for (let i = 0; i < sortLinks.length; i++) {
+                const sortLink = sortLinks[i];
+                sortLink.addEventListener('click', function () {
+                    let current = document.querySelectorAll('.clicked');
+                    current[0].className = current[0].className.replace(' clicked', '');
+                    sortLink.classList.add('clicked');
+                })
+            };
         }
-    });
-    // Добавляем класс clicked к активным ссылкам
-    let sortLinks = document.querySelectorAll('.sort__link');
-    for (let i = 0; i < sortLinks.length; i++) {
-        const sortLink = sortLinks[i];
-        sortLink.addEventListener('click', function () {
-            let current = document.querySelectorAll('.clicked');
-            current[0].className = current[0].className.replace(' clicked', '');
-            sortLink.classList.add('clicked');
-        })
-    };
+    }
 }
+
 
 
 
