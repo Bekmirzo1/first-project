@@ -127,9 +127,9 @@ if (filterLinksParents.length > 0){
                 const filterAtr = e.target.dataset.find;
                 for (const project of projects) {
                     if (project.classList.contains(filterAtr) || filterAtr === 'all') {
-                        project.classList.remove('hide');
+                        project.classList.add('show');
                     } else {
-                        project.classList.add('hide');
+                        project.classList.remove('show');
                     }
                 }
             });
